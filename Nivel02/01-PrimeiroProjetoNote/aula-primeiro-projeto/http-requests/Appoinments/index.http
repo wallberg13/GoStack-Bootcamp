@@ -1,0 +1,13 @@
+@host = http://localhost:3333/appointments
+
+### Create Appointment
+POST {{host}}
+Content-Type: application/json
+
+{
+  "provider": "Wall Berg Morais",
+  "date": "{{$datetime iso8601}}"
+}
+
+### List All Appointment
+GET {{host}}

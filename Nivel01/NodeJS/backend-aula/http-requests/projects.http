@@ -1,0 +1,28 @@
+@host = http://localhost:3333
+@title = VueJS
+@owner = Wall%20Morais
+###
+GET {{host}}/projects
+
+### 
+POST {{host}}/projects
+Content-Type: application/json
+
+{
+  "title": "Bucetinha com VueJS",
+  "owner": "Caralhos de Zebra"
+}
+
+
+### 
+PUT {{host}}/projects/5ab8f3b9-f3a0-4b6f-ba66-5d82ce09bf4f
+Content-Type: application/json
+
+{
+  "title": "Novo Aplicativo",
+  "owner": "WallZasso"
+}
+
+### 
+DELETE {{host}}/projects/5ab8f3b9-f3a0-4b6f-ba66-5d82ce09bf4f
+
