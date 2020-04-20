@@ -1,4 +1,5 @@
 @host = http://localhost:3333/users
+@formDataLimit = XXXXXXXXXXXXXXXXXXXX
 
 ###
 POST {{host}}
@@ -11,5 +12,13 @@ Content-Type: application/json
 }
 
 ###
-PATCH  {{host}}/avatar
+PATCH {{host}}/avatar
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1ODczMjkxNzYsImV4cCI6MTU4NzQxNTU3Niwic3ViIjoiOWNhNjA5M2MtMTZlNC00YjgxLTk5OTQtZTg5ZWZmYzJiMjkyIn0.MppTL48ge08WgiGcXECxGs7E6O-p-mBxLPYdExTDYiI
+Content-Type: multipart/form-data; boundary={{formDataLimit}}
+
+--{{formDataLimit}}
+Content-Disposition: form-data; name="avatar"; filename="profile.jpg"
+Content-Type: image/jpg
+
+< ./../profile.jpg
+--{{formDataLimit}}--
