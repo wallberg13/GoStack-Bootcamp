@@ -26,7 +26,7 @@ userRouter.post("/", async (request, response) => {
 
     return response.json(user);
   } catch (err) {
-    return response.status(400).json({ error: err.message });
+    return response.status(err.statusCode).json({ error: err.message });
   }
 });
 
@@ -40,21 +40,15 @@ userRouter.patch(
 
   upload.single("avatar"),
   async (request, response) => {
-    try {
-      // const { user_id: id } = request.user;
+    const updateUserAvatar = new UpdateUserAvatarService();
+    const user = await updateUserAvatar.execute({
+      user_id: request.user.id,
+      avatarFilename: request.file.filename
+    });
 
-      const updateUserAvatar = new UpdateUserAvatarService();
-      const user = await updateUserAvatar.execute({
-        user_id: request.user.id,
-        avatarFilename: request.file.filename
-      });
+    delete user.password;
 
-      delete user.password;
-
-      return response.json(user);
-    } catch (err) {
-      return response.status(400).json({ error: err.message });
-    }
+    return response.json(user);
   }
 );
 
