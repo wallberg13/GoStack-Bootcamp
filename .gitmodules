@@ -1,0 +1,3 @@
+[submodule "Nivel02/02-IniciandoBackendDoApp/GoStack-Nivel02-DatabaseUpload"]
+	path = Nivel02/02-IniciandoBackendDoApp/GoStack-Nivel02-DatabaseUpload
+	url = https://github.com/wallberg13/GoStack-Nivel02-DatabaseUpload
