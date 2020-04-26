@@ -41,6 +41,12 @@
       }
     ],
     "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpression": true // Uma arrow function é uma expressão
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
