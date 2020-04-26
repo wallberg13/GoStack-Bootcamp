@@ -1,7 +1,18 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./routes";
 
-function App() {
-  return <h1>Hellow World</h1>;
-}
+/**
+ * No React Router DOM, possuimos alguns tipos de Routes.
+ * Como o BrowserRouter, que funciona como um endereço em cima do Browser.
+ *
+ * -> Para que server uma Hashrouter
+ *    -> Serve para SPA, hoje, serve mais para BrowserRouter
+ */
+const App: React.FC = () => (
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>
+);
 
 export default App;
