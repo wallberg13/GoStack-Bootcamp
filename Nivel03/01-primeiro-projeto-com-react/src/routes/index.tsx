@@ -18,7 +18,8 @@ import NotFound from "../pages/NotFound";
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/repository" exact component={Repository} />
+    {/* O +, indica que tudo que vier dps, tbm faz parte da rota, ou seja, é um parâmetro. */}
+    <Route path="/repository/:repository+" exact component={Repository} />
     <Route path="*" component={NotFound} />
   </Switch>
 );
