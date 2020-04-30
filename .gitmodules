@@ -1,3 +1,6 @@
 [submodule "Nivel02/02-IniciandoBackendDoApp/GoStack-Nivel02-DatabaseUpload"]
 	path = Nivel02/02-IniciandoBackendDoApp/GoStack-Nivel02-DatabaseUpload
 	url = https://github.com/wallberg13/GoStack-Nivel02-DatabaseUpload
+[submodule "Nivel03/GoStack-Nivel03-FundamentosReactJS"]
+	path = Nivel03/GoStack-Nivel03-FundamentosReactJS
+	url = https://github.com/wallberg13/GoStack-Nivel03-FundamentosReactJS
