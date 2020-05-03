@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { shade } from "polished";
-import signInBackgroundImg from "../../assets/sign-in-background.png";
+import singUpBackground from "../../assets/sign-up-background.png";
 
 export const Container = styled.div`
   /** Forçar que o container possua 100% do View Port Height, ou seja,
@@ -55,7 +55,7 @@ export const Content = styled.div`
      um nivel para dentro.
    */
   > a {
-    color: #ff9000;
+    color: #f4ede8;
     display: block;
     margin-top: 24px;
     text-decoration: none;
@@ -69,7 +69,7 @@ export const Content = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, "#ff9000")};
+      color: ${shade(0.2, "#f4ede8")};
     }
   }
 `;
@@ -81,7 +81,7 @@ export const Background = styled.div`
   /*
     Adicionando a imagem de fundo, para não repetir e fica centralizada
    */
-  background: url(${signInBackgroundImg}) no-repeat center;
+  background: url(${singUpBackground}) no-repeat center;
   /* O cover faz com que o background ocupe toda a parte do container, mesmo que ele nao ocupe todo o espaço,
      e é um fato muito importante para a responsividade da aplicação.
    */
