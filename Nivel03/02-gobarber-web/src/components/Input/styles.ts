@@ -1,8 +1,11 @@
 import styled, { css } from "styled-components";
 
+import Tooltip from "../Tooltip";
+
 interface ContainerProps {
   isFocused: boolean;
   isFilled: boolean;
+  isErrored: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -19,6 +22,16 @@ export const Container = styled.div<ContainerProps>`
     margin-top: 8px;
   }
 
+  /**
+    Sempre lembrando que a ordem das coisas importam:
+    -> Se tem erro, mas tem foco, o ideal é ter a borda de foco.
+   */
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border-color: #c53030;
+    `}
+
   ${(props) =>
     props.isFocused &&
     css`
@@ -31,6 +44,7 @@ export const Container = styled.div<ContainerProps>`
     css`
       color: #ff9000;
     `}
+
 
 
   input {
@@ -46,5 +60,27 @@ export const Container = styled.div<ContainerProps>`
 
   svg {
     margin-right: 16px;
+  }
+`;
+
+/**
+ * O Styled component permite que a gente aplique estilização em componentes
+ * personalizados, no caso, o Tooltip. Essa estilização é aplicada em cima do Container
+ * raiz que foi criado neste componente.
+ */
+export const Error = styled(Tooltip)`
+  /* Deixando fixo o tamanho da DIV para o tamanho do SVG */
+  height: 20px;
+  margin-left: 16px; /** Para garantir que o texto não chegue no erro */
+  svg {
+    margin: 0;
+  }
+
+  span {
+    background: #c53030;
+    color: #fff;
+    &::before {
+      border-color: #c53030 transparent;
+    }
   }
 `;
