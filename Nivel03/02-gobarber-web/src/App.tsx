@@ -6,14 +6,14 @@ import GlobalStyle from "./styles/global";
  * AuthContext.Provider
  * -> Diz que todo mundo que está por volta dele, vai ter acesso a informação de autenticação.
  */
-import AuthContext from "./context/AuthContext";
+import { AuthProvider } from "./hooks/AuthContext";
 
 const App: React.FC = () => (
   <>
     <GlobalStyle />
-    <AuthContext.Provider value={{ name: "Wall Morais" }}>
+    <AuthProvider>
       <SignIn />
-    </AuthContext.Provider>
+    </AuthProvider>
   </>
 );
 
