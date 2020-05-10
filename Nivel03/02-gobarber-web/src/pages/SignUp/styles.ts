@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { shade } from "polished";
 import singUpBackground from "../../assets/sign-up-background.png";
 
@@ -28,7 +28,46 @@ export const Content = styled.div`
   width: 100%;
   /* Nunca passa dessa quantidade de pixels */
   max-width: 700px;
+`;
 
+export const Background = styled.div`
+  /* Faz com que o componente ocupe todo o espaço disponivel para o mesmo, ou seja, é flexível. */
+  flex: 1;
+
+  /*
+    Adicionando a imagem de fundo, para não repetir e fica centralizada
+   */
+  background: url(${singUpBackground}) no-repeat center;
+  /* O cover faz com que o background ocupe toda a parte do container, mesmo que ele nao ocupe todo o espaço,
+     e é um fato muito importante para a responsividade da aplicação.
+   */
+  background-size: cover;
+`;
+
+const appearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+export const AnimatedContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*
+    Place-Concent diz que tudo e qualquer coisa
+    que seja colocada no componente, vai ficar no centro
+  */
+  place-content: center;
+  justify-content: center;
+
+  animation: ${appearFromRight} 1s;
   form {
     margin: 80px 0;
     width: 340px;
@@ -72,18 +111,4 @@ export const Content = styled.div`
       color: ${shade(0.2, "#f4ede8")};
     }
   }
-`;
-
-export const Background = styled.div`
-  /* Faz com que o componente ocupe todo o espaço disponivel para o mesmo, ou seja, é flexível. */
-  flex: 1;
-
-  /*
-    Adicionando a imagem de fundo, para não repetir e fica centralizada
-   */
-  background: url(${singUpBackground}) no-repeat center;
-  /* O cover faz com que o background ocupe toda a parte do container, mesmo que ele nao ocupe todo o espaço,
-     e é um fato muito importante para a responsividade da aplicação.
-   */
-  background-size: cover;
 `;
