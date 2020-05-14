@@ -10,7 +10,6 @@ import SignUp from "../pages/SignUp";
  * Comparando com o ReactRouterDom, o react-navigation basicamente possui os componentes
  * que se assemelha com o Route, Switch e o Browser Router, que é o Screen, Navigation e o NavigationContainer.
  * -> As rotas esta mais para uma mistura de Routes com Context.
- *
  */
 const Auth = createStackNavigator();
 
