@@ -7,6 +7,7 @@ import {
   Platform
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
+import { useNavigation } from "@react-navigation/native";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -22,7 +23,8 @@ import {
 } from "./styles";
 
 const SignIn: React.FC = () => {
-  8;
+  const navigation = useNavigation();
+
   return (
     <>
       {/*
@@ -55,14 +57,14 @@ const SignIn: React.FC = () => {
             <Button onPress={() => {}}>Entrar</Button>
 
             <ForgotPassword onPress={() => {}}>
-              <ForgotPasswordText>Esqueci minha Senha</ForgotPasswordText>
+              <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
 
       {/* Botão para criar a conta fora do container pois ele possui um position absolute. */}
-      <CreateAccountButton onPress={() => {}}>
+      <CreateAccountButton onPress={() => navigation.navigate("SignUp")}>
         <Icon name="log-in" size={20} color="#ff9000" />
         <CreateAccountButtonText>Criar uma Conta</CreateAccountButtonText>
       </CreateAccountButton>
