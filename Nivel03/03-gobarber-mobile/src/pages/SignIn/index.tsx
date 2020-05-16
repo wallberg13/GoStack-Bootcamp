@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import {
   Image,
   View,
@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
+import { Form } from "@unform/mobile";
+import { FormHandles } from "@unform/core";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -23,7 +25,14 @@ import {
 } from "./styles";
 
 const SignIn: React.FC = () => {
+  // Criamos uma Ref no react quando queremos manusear um elemento pela forma
+  // direta e não por outra referência.
+  const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
+
+  const handleSignIn = useCallback((data: object) => {
+    console.log(data);
+  }, []);
 
   return (
     <>
@@ -52,10 +61,22 @@ const SignIn: React.FC = () => {
             <View>
               <Title>Faça seu Logon</Title>
             </View>
-            <Input name="email" icon="mail" placeholder="E-mail" />
-            <Input name="password" icon="lock" placeholder="Senha" />
-            <Button onPress={() => {}}>Entrar</Button>
+            <Form ref={formRef} onSubmit={handleSignIn}>
+              <Input name="email" icon="mail" placeholder="E-mail" />
+              <Input name="password" icon="lock" placeholder="Senha" />
 
+              <Button
+                // No react-native, não EXISTE SUBMIT NOS BUTTONS, portanto,
+                // nós precisamos fazer isso manual, atráves da Referencia do Formulário
+                // quando utilizamos o FormRef. Com isso, iremos executar uma ação de submit
+                // no mesmo, para que ele chame a nossa função de submissão.
+                onPress={() => {
+                  formRef.current?.submitForm();
+                }}
+              >
+                Entrar
+              </Button>
+            </Form>
             <ForgotPassword onPress={() => {}}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
