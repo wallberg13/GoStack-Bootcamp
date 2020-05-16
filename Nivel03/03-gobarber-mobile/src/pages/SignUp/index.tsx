@@ -4,25 +4,76 @@ import {
   View,
   ScrollView,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  TextInput,
+  Alert
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
 import { Form } from "@unform/mobile";
 import { FormHandles } from "@unform/core";
+import * as Yup from "yup";
 
+import getValidationErrors from "../../utils/getValidationErrors";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
 import logoImg from "../../assets/logo.png";
 import { Container, Title, BackToSignIn, BackToSignInText } from "./styles";
 
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
+}
+
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
 
-  const handleSignUp = useCallback((data: object) => {
-    console.log(data);
+  const emailInputRef = useRef<TextInput>(null);
+  const passwordInputRef = useRef<TextInput>(null);
+
+  const handleSignUp = useCallback(async (data: SignUpFormData) => {
+    try {
+      formRef.current?.setErrors({});
+      /**
+       * Esquema de validação
+       * Bem semelhante ao celebrate, o esquema de validação acaba sendo a
+       * mesma coisa.
+       */
+      const schema = Yup.object().shape({
+        name: Yup.string().required("Nome obrigatório"),
+        email: Yup.string()
+          .required("E-mail obrigatório")
+          .email("Digite um e-mail válido"),
+        password: Yup.string().min(6, "No mínimo 6 dígitos ")
+      });
+
+      /**
+       * AbortEarly: retorna todos os erros e não o primeiro que ele encontrar.
+       */
+      await schema.validate(data, { abortEarly: false });
+
+      // await api.post("/users", data);
+
+      Alert.alert(
+        "Cadastro Realizado",
+        "Você já pode fazer seu logon no GoBarber!"
+      );
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+
+        return;
+      }
+
+      Alert.alert(
+        "Erro no Cadastro",
+        "Ocorreu um erro ao fazer cadastro, tente novamente"
+      );
+    }
   }, []);
 
   return (
@@ -54,9 +105,38 @@ const SignUp: React.FC = () => {
             </View>
 
             <Form ref={formRef} onSubmit={handleSignUp}>
-              <Input name="name" icon="user" placeholder="Nome" />
-              <Input name="email" icon="mail" placeholder="E-mail" />
-              <Input name="password" icon="lock" placeholder="Senha" />
+              <Input
+                autoCapitalize="words"
+                name="name"
+                icon="user"
+                placeholder="Nome"
+                returnKeyType="next"
+                onSubmitEditing={() => emailInputRef.current?.focus()}
+              />
+              <Input
+                ref={emailInputRef}
+                keyboardType="email-address"
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="email"
+                icon="mail"
+                placeholder="E-mail"
+                returnKeyType="next"
+                onSubmitEditing={() => passwordInputRef.current?.focus()}
+              />
+              <Input
+                ref={passwordInputRef}
+                secureTextEntry
+                name="password"
+                icon="lock"
+                placeholder="Senha"
+                // Cria uma nova senha ao invés de usar uma sugestão do proprio sistema
+                // textContentType como oneTimeCode --> É preenchido automático ao receber
+                // o sms.
+                textContentType="newPassword"
+                returnKeyType="send"
+                onSubmitEditing={() => formRef.current?.submitForm()}
+              />
               <Button onPress={() => formRef.current?.submitForm()}>
                 Entrar
               </Button>
