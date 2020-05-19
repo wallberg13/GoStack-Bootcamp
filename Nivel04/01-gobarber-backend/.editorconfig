@@ -1,0 +1,9 @@
+root = true
+
+[*]
+end_of_line = lf # Final da linha, sempre com o \n
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true # Retina os espaços em branco depois do final da linha
+insert_final_newline = true # Sempre deixa uma linha a mais no final do arquivo.

@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      // Attach: colocamos o código para executar, e no meio do processo, não colocamos o
+      // debug para rodar, e ele conecta o debug na aplicação em execução.
+      // Inspector: colocamos o debug para executar e o programa vai junto
+      "request": "attach",
+      // É adicionado uma flag na excução do ts-node-dev (--inspect), que com ela,
+      // será permitido a adição de debug na execução do código.
+      "protocol": "inspector",
+      "restart": true,
+      "name": "Debug",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
+      ]
+    }
+  ]
+}
