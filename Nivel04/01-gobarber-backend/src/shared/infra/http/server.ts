@@ -2,16 +2,16 @@ import "reflect-metadata";
 import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
 import cors from "cors";
-import routes from "./routes";
+import uploadConfig from "@config/upload";
+import AppError from "@shared/errors/AppError";
+import "@shared/infra/typeorm";
 
-import uploadConfig from "./config/upload";
+import routes from "./routes";
 
 /**
  * Para utilizar o TypeORM, basta iniciar a aplicação, e importar a mesma,
  * que já saí tudo funcionando (já entra fudendo!!);
  */
-import "./database";
-import AppError from "./errors/AppError";
 
 const app = express();
 
