@@ -1,5 +1,6 @@
 import { hash } from "bcrypt";
 import AppError from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
 import User from "../infra/typeorm/entities/User";
 import IUsersRepository from "../repositories/IUsersRepository";
@@ -9,9 +10,13 @@ interface IRequest {
   email: string;
   password: string;
 }
-
+@injectable()
 class CreateUserService {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(
+    // Dizendo que o carinha que estou usando aqui foi injetado de algum lugar.
+    @inject("UsersRepository")
+    private usersRepository: IUsersRepository
+  ) {}
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);

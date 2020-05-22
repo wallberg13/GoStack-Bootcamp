@@ -1,5 +1,5 @@
 import { startOfHour } from "date-fns";
-
+import { injectable, inject } from "tsyringe";
 import AppError from "@shared/errors/AppError";
 
 // Não vale a pena o esforço de fazer o service enchegar um Appointments que não
@@ -21,10 +21,19 @@ interface IRequest {
  *
  */
 
+/**
+ * Marcando a classe como injetável.
+ * Esse decorator é sempre necessário para quando precisamos fazer alguma injeção
+ * dentro do arquivo.
+ */
+@injectable()
 class CreateAppointmentService {
   // Colocando o private dentro do parametro do constructor, essa variavel do appointmentsRepository
   // já vai está disponível no contexto.
-  constructor(private appointmentsRepository: IAppointmentsRepository) {}
+  constructor(
+    @inject("AppointmentsRepository")
+    private appointmentsRepository: IAppointmentsRepository
+  ) {}
 
   public async execute({ provider_id, date }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
