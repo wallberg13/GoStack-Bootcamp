@@ -1,5 +1,7 @@
 import { container } from "tsyringe";
 
+import "@modules/users/providers";
+
 /**
  * Quando utilizamos injeção de dependencias, alguem precisa fazer esse controle. Esse
  * kra é o container.
