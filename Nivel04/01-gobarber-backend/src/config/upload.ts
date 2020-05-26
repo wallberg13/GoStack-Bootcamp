@@ -6,7 +6,8 @@ const tmpFolder = path.resolve(__dirname, "..", "..", "tmp");
 
 export default {
   // Local onde os arquivos "ficam".
-  directory: tmpFolder,
+  tmpFolder,
+  uploadsFolder: path.resolve(tmpFolder, "uploads"),
   // Armazenando as imagens em nuvem.
   storage: multer.diskStorage({
     // Onde os arquivos irao ficar
