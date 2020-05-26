@@ -1,6 +1,5 @@
-import { inject, injectable } from "tsyringe";
-
 import AppError from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
 import IStorageProvider from "@shared/container/providers/StorageProvider/models/IStorageProvider";
 import User from "../infra/typeorm/entities/User";
@@ -17,7 +16,6 @@ class UpdateUserAvatarService {
     // Dizendo que o carinha que estou usando aqui foi injetado de algum lugar.
     @inject("UsersRepository")
     private usersRepository: IUsersRepository,
-
     @inject("StorageProvider")
     private storageProvider: IStorageProvider
   ) {}
