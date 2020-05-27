@@ -1,0 +1,24 @@
+@host = http://localhost:3333/users
+@formDataLimit = XXXXXXXXXXXXXXXXXXXX
+
+###
+POST {{host}}
+Content-Type: application/json
+
+{
+  "name": "Wall Berg Morais",
+  "email": "wall.morais@virtex.com.br",
+  "password": "paparroz"
+}
+
+###
+PATCH {{host}}/avatar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTA0NjA3NjgsImV4cCI6MTU5MDU0NzE2OCwic3ViIjoiOWNhNjA5M2MtMTZlNC00YjgxLTk5OTQtZTg5ZWZmYzJiMjkyIn0.ujf0EbRheyeRWyxiLjjJ9gGLKWJDC21WhR8X0CIj0zE
+Content-Type: multipart/form-data; boundary={{formDataLimit}}
+
+--{{formDataLimit}}
+Content-Disposition: form-data; name="avatar"; filename="profile.jpg"
+Content-Type: image/jpg
+
+< ./../profile.jpg
+--{{formDataLimit}}--
