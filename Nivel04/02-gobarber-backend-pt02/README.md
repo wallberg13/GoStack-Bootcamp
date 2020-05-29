@@ -18,6 +18,9 @@
 - O link enviado por email para resetar senha, deve expirar em 2h;
 - O usuário precisa confirmar a nova senha ao resetar sua senha;
 
+// Resetar a Senha
+// Identificar o usuário
+
 # Atualização do perfil
 
 **RF**

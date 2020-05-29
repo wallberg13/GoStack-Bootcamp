@@ -2,43 +2,46 @@
 import { inject, injectable } from "tsyringe";
 
 // import User from "../infra/typeorm/entities/User";
-import IMailProvider from "@shared/container/providers/MailProvider/models/IMailProvider";
+// import AppError from "@shared/errors/AppError";
 import AppError from "@shared/errors/AppError";
 import IUsersRepository from "../repositories/IUsersRepository";
 import IUserTokensRepository from "../repositories/IUserTokensRepository";
 
 interface IRequest {
-  email: string;
+  token: string;
+  password: string;
 }
 @injectable()
-class SendForgotPasswordEmailService {
+class ResetPasswordService {
   constructor(
     // Dizendo que o carinha que estou usando aqui foi injetado de algum lugar.
     @inject("UsersRepository")
     private usersRepository: IUsersRepository,
-
-    @inject("MailProvider")
-    private mailProvider: IMailProvider,
 
     @inject("UserTokensRepository")
     private userTokensRepository: IUserTokensRepository
   ) {}
 
   // public async execute({ email }: IRequest): Promise<void> {}
-  public async execute({ email }: IRequest): Promise<void> {
-    const user = await this.usersRepository.findByEmail(email);
+  public async execute({ token, password }: IRequest): Promise<void> {
+    const userToken = await this.userTokensRepository.findByToken(token);
 
+    // Incialmente, verificando se o token existe
+    if (!userToken) {
+      throw new AppError("User token does not exists");
+    }
+
+    const user = await this.usersRepository.findById(userToken.user_id);
+
+    // Verificando se o usuario existe, que é o dono do token.
     if (!user) {
       throw new AppError("User does not exists");
     }
 
-    await this.userTokensRepository.generate(user.id);
+    user.password = password;
 
-    this.mailProvider.sendMail(
-      email,
-      "Pedido de recuperação de senha recebido"
-    );
+    await this.usersRepository.save(user);
   }
 }
 
-export default SendForgotPasswordEmailService;
+export default ResetPasswordService;
