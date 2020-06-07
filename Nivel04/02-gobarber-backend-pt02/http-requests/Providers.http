@@ -1,0 +1,5 @@
+@host = http://localhost:3333/providers/
+
+### Obtendo todos os providers except user_logged
+GET {{host}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTE1MzY4NTIsImV4cCI6MTU5MTYyMzI1Miwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.m1zVmXHekJifTwXuwKeGQfpqwk9hBybHAliXmuZyVWM
