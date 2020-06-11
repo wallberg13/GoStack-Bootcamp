@@ -1,5 +1,5 @@
-// import AppError from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { getDaysInMonth, getDate } from "date-fns";
 import IAppointmentsRepository from "../repositories/IAppointmentsRepository";
 
 // import User from "@modules/users/infra/typeorm/entities/User";
@@ -41,9 +41,31 @@ class ListProviderMonthAvailabilityService {
       { provider_id, year, month }
     );
 
-    console.log(appointments);
+    const numberOfDaysInMonth = getDaysInMonth(new Date(year, month - 1));
 
-    return [{ day: 1, available: false }];
+    // Função para criar um array com um tamanho e
+    // função de criação.
+    const eachDayArray = Array.from(
+      {
+        length: numberOfDaysInMonth
+      },
+      (_, index) => index + 1
+    );
+
+    // 8 até 17hrs.
+    const availability = eachDayArray.map(day => {
+      const appointmentsInDay = appointments.filter(appointment => {
+        return getDate(appointment.date) === day;
+      });
+
+      return {
+        day,
+        // Modo Gambiarra
+        available: appointmentsInDay.length < 10
+      };
+    });
+
+    return availability;
   }
 }
 
