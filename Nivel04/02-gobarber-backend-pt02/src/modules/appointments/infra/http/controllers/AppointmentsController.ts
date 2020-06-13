@@ -7,6 +7,7 @@ import CreateAppointmentService from "@modules/appointments/services/CreateAppoi
 export default class AppointmentController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { provider_id, date } = request.body;
+    const { id: user_id } = request.user;
     const parsedDate = parseISO(date);
 
     // Como nao tenho mais a injecao de dependencias, removo o que precisava passar como parâmetro
@@ -14,6 +15,7 @@ export default class AppointmentController {
     const createAppointment = container.resolve(CreateAppointmentService);
 
     const appointment = await createAppointment.execute({
+      user_id,
       provider_id,
       date: parsedDate
     });

@@ -44,6 +44,14 @@ class Appointment {
   @JoinColumn({ name: "provider_id" })
   provider: User;
 
+  @Column()
+  user_id: string;
+
+  // Isso só existe na nossa aplicação, não existe no banco
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "user_id" })
+  user: User;
+
   @Column("timestamp with time zone") // Somente com postgress.
   date: Date;
 

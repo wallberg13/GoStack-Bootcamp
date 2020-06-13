@@ -3,10 +3,10 @@
 ### Create Appointment
 POST {{host}}
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1ODczMjkxNzYsImV4cCI6MTU4NzQxNTU3Niwic3ViIjoiOWNhNjA5M2MtMTZlNC00YjgxLTk5OTQtZTg5ZWZmYzJiMjkyIn0.MppTL48ge08WgiGcXECxGs7E6O-p-mBxLPYdExTDYiI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIwNzI4MjcsImV4cCI6MTU5MjE1OTIyNywic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.KUX650hbiudOP0sBtwaFLQBaICOqIrG3EUmkQooBw4U
 
 {
-  "provider_id": "1cfe617e-0be9-4cff-8c47-4af6c482caa3",
+  "provider_id": "12f3e6bd-2e19-477f-8a77-e0789d2a4ebb",
   "date": "{{$datetime iso8601}}"
 }
 
