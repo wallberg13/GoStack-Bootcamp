@@ -8,3 +8,13 @@ Content-Type: application/json
   "email": "wallbergmirandamorais@gmail.com",
   "password": "123456"
 }
+
+
+### Realizando Login - 2
+POST {{host}}
+Content-Type: application/json
+
+{
+  "email": "wallbergmirandamorais2@gmail.com",
+  "password": "paparroz"
+}
