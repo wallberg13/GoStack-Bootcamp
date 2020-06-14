@@ -1,0 +1,10 @@
+@host = http://localhost:3333/sessions/
+
+## Realizando Login
+POST {{host}}
+Content-Type: application/json
+
+{
+  "email": "wallbergmirandamorais@gmail.com",
+  "password": "123456"
+}

@@ -1,0 +1,6 @@
+1. Rotas e Controllers -> OK
+2. Repositório de tokens (TypeORM) -> OK
+3. Criar migration de tokens -> OK
+4. Provider de envio de e-mail (DEV) -> OK
+5. Registrar Providers no Container -> OK
+6. Testar tudo!!
