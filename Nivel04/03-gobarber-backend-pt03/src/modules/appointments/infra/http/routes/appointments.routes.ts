@@ -19,3 +19,6 @@ appointmentsRouter.post("/", appointmentsController.create);
 appointmentsRouter.get("/me", providerAppointmentsController.index);
 
 export default appointmentsRouter;
+
+// Acesso ao MongoDB
+// URL: mongodb://localhost:27017/
