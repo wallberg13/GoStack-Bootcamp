@@ -8,6 +8,9 @@ import "./providers";
  * kra é o container.
  */
 
+import INotificationsRepository from "@modules/notifications/repositories/INotificationsRepository";
+import NotificationsRepository from "@modules/notifications/infra/typeorm/repositories/NotificationsRepository";
+
 import IAppointmentsRepository from "@modules/appointments/repositories/IAppointmentsRepository";
 import AppointmentsRepository from "@modules/appointments/infra/typeorm/repositories/AppointmentsRepository";
 
@@ -19,6 +22,12 @@ import UserTokensRepository from "@modules/users/infra/typeorm/repositories/User
 
 // Garantindo que a variável que estamos passando no segundo parâmetro
 // seja do mesmo tipo que o parâmetro de Tipagem, pois assim, ele não deixaria que isso acontecesse.
+
+container.registerSingleton<INotificationsRepository>(
+  "NotificationsRepository",
+  NotificationsRepository
+);
+
 /**
  * Pq regiter Singleton: para a intância ser criada somente uma vez durante todo o ciclo de vida da aplicação.
  */
