@@ -1,4 +1,5 @@
 import AppError from "@shared/errors/AppError";
+import FakeNotificationsRepository from "@modules/notifications/repositories/fakes/FakeNotiticationsRepository";
 import FakeAppointmentRepository from "../repositories/fakes/FakeAppointmentsRepository";
 import CreateAppointmentService from "./CreateAppointmentService";
 
@@ -8,6 +9,7 @@ import CreateAppointmentService from "./CreateAppointmentService";
 // Para nao fazer esse toque, vamos criar um fake repository.
 
 let fakeAppointmentRepository: FakeAppointmentRepository;
+let fakeNotificationsRepository: FakeNotificationsRepository;
 let createAppointment: CreateAppointmentService;
 
 // Describe cria uma categoria de teste
@@ -17,9 +19,11 @@ describe("CreateAppointment", () => {
   // Serve como o test
 
   beforeEach(() => {
+    fakeNotificationsRepository = new FakeNotificationsRepository();
     fakeAppointmentRepository = new FakeAppointmentRepository();
     createAppointment = new CreateAppointmentService(
-      fakeAppointmentRepository /* Disallow inconsistently-cased references to the same file. */
+      fakeAppointmentRepository /* Disallow inconsistently-cased references to the same file. */,
+      fakeNotificationsRepository
     );
   });
 
