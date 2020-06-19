@@ -1,6 +1,6 @@
 @host = http://localhost:3333/appointments
 
-@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIzNTk4NTEsImV4cCI6MTU5MjQ0NjI1MSwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.ebK4tqrOHcwyWhCVvLT3iWSBuOYiew5HPvv6hygbDdY
+@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI1MzQ4NDYsImV4cCI6MTU5MjYyMTI0Niwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.7cKnMLKhqWDnuyXIyvYWKEA-1NNCFrMoF0Xef2mHHh4
 @tokenProvider = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIxNzQ3MzMsImV4cCI6MTU5MjI2MTEzMywic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.Hhopw4HgnpJiMbQ16LlqEdLoWUJZJsIsMqwm8JFsj28
 
 ### Create Appointment
@@ -10,7 +10,7 @@ Authorization: Bearer {{tokenUser}}
 
 {
   "provider_id": "19c02ea6-7d11-4a43-adf3-7357e804ee48",
-  "date": "2020-06-13T15:00:00-03:00"
+  "date": "2020-06-30T15:00:00-03:00"
 }
 
 ### List All Appointment

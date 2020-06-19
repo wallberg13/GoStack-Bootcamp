@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { celebrate, Segments, Joi } from "celebrate";
 import multer from "multer";
 
 import uploadConfig from "@config/upload";
@@ -17,7 +18,17 @@ const userAvatarController = new UserAvatarController();
  */
 
 // Rota completa: http://localhost:3333/appointments/
-userRouter.post("/", usersController.create);
+userRouter.post(
+  "/",
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().required()
+    }
+  }),
+  usersController.create
+);
 
 /**
  * Alterando somente uma informação.

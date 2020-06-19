@@ -2,6 +2,7 @@ import "reflect-metadata";
 
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
+import { errors } from "celebrate";
 import "express-async-errors";
 
 import uploadConfig from "@config/upload";
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use("/files", express.static(uploadConfig.uploadsFolder));
 app.use(routes);
 
+app.use(errors());
 /**
  * O que muda?
  * Um middleware normal para um middleware de error
@@ -35,8 +37,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
       .status(err.statusCode)
       .json({ status: "error", message: err.message });
   }
-
-  console.log(err);
 
   return response.status(500).json({
     status: "error",

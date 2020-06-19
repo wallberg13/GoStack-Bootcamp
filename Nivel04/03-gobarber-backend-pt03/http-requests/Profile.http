@@ -6,12 +6,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTE0MTI4M
 
 ### Atualizando o Profile
 PUT {{host}}
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTE0MTI4MjksImV4cCI6MTU5MTQ5OTIyOSwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.qmD9zbvXsj2RaK8dVse6IdZgxS8AOBEwDIldrZUq_Zo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI1MzQ4NDYsImV4cCI6MTU5MjYyMTI0Niwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.7cKnMLKhqWDnuyXIyvYWKEA-1NNCFrMoF0Xef2mHHh4
 Content-Type: application/json
 
 {
   "name": "Wall Berg M.",
   "email": "wallbergmirandamorais@gmail.com",
   "old_password": "123123",
-  "password": "123456"
+  "password": "123456",
+  "password_confirmation": "123456"
 }
