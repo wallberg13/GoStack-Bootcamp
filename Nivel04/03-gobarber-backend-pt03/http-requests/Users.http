@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 PATCH {{host}}/avatar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTA0NjA3NjgsImV4cCI6MTU5MDU0NzE2OCwic3ViIjoiOWNhNjA5M2MtMTZlNC00YjgxLTk5OTQtZTg5ZWZmYzJiMjkyIn0.ujf0EbRheyeRWyxiLjjJ9gGLKWJDC21WhR8X0CIj0zE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI2MjE0MTYsImV4cCI6MTU5MjcwNzgxNiwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.z5UswdSHdpMa467mhuoYGlY7WTYwG6trDP6E75DJVzA
 Content-Type: multipart/form-data; boundary={{formDataLimit}}
 
 --{{formDataLimit}}

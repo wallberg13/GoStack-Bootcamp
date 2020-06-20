@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import AuthenticateUserService from "@modules/users/services/AuthenticateUserService";
-
+import { classToClass } from "class-transformer";
 /**
  * Seguindo a metodologia do REST, deve possuir apenas 5 métodos, são eles:
  * index, show, create, update, delete
@@ -17,8 +17,8 @@ export default class SessionsController {
       password
     });
 
-    delete user.password;
+    // delete user.password;
 
-    return response.json({ user, token });
+    return response.json({ user: classToClass(user), token });
   }
 }

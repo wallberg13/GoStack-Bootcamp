@@ -2,7 +2,7 @@
 
 ### Mostrango o Profile
 GET {{host}}
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTE0MTI4MjksImV4cCI6MTU5MTQ5OTIyOSwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.qmD9zbvXsj2RaK8dVse6IdZgxS8AOBEwDIldrZUq_Zo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI2MjIyMTEsImV4cCI6MTU5MjcwODYxMSwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.pijbq7Qc4zGKIXaXXeGuBRY7sbgntapwPtJ_mUPaLnQ
 
 ### Atualizando o Profile
 PUT {{host}}
