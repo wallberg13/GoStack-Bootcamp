@@ -22,4 +22,21 @@ export default class RedisCacheProvider implements ICacheProvider {
   public async invalidate(key: string): Promise<void> {
     console.log(key);
   }
+
+  public async invalidatePrefix(prefix: string): Promise<void> {
+    const keys = await this.client.keys(`${prefix}:*`);
+
+    // Criando um pipeline (basicamente, eu entendi que seja uma fila),
+    const pipeline = this.client.pipeline();
+
+    // Ai percorrendo todo mundo que gerou o cache, estou adicionando aquela key no
+    // pipeline
+    keys.forEach(key => pipeline.del(key));
+
+    // E agora estou executando aquela função del para todo mundo que eu tinha
+    // adicionado no mesmo.
+    await pipeline.exec();
+
+    console.log("Cache invalidado");
+  }
 }

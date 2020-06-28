@@ -29,7 +29,7 @@ class ListProvidersService {
       users = await this.usersRepository.findAllProviders({
         except_user_id: user_id
       });
-
+      console.log("Cache adicionado");
       // ":" no redis é como se fosse um nível a mais de cache.
       await this.cacheProvider.save(`providers-list:${user_id}`, users);
     }
