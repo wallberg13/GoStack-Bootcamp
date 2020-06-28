@@ -1,5 +1,6 @@
 import AppError from "@shared/errors/AppError";
 import FakeNotificationsRepository from "@modules/notifications/repositories/fakes/FakeNotiticationsRepository";
+import FakeCacheProvider from "@shared/container/providers/CacheProvider/fakes/FakeCacheProvider";
 import FakeAppointmentRepository from "../repositories/fakes/FakeAppointmentsRepository";
 import CreateAppointmentService from "./CreateAppointmentService";
 
@@ -10,6 +11,7 @@ import CreateAppointmentService from "./CreateAppointmentService";
 
 let fakeAppointmentRepository: FakeAppointmentRepository;
 let fakeNotificationsRepository: FakeNotificationsRepository;
+let fakeCacheProvider: FakeCacheProvider;
 let createAppointment: CreateAppointmentService;
 
 // Describe cria uma categoria de teste
@@ -21,9 +23,11 @@ describe("CreateAppointment", () => {
   beforeEach(() => {
     fakeNotificationsRepository = new FakeNotificationsRepository();
     fakeAppointmentRepository = new FakeAppointmentRepository();
+    fakeCacheProvider = new FakeCacheProvider();
     createAppointment = new CreateAppointmentService(
       fakeAppointmentRepository /* Disallow inconsistently-cased references to the same file. */,
-      fakeNotificationsRepository
+      fakeNotificationsRepository,
+      fakeCacheProvider
     );
   });
 
