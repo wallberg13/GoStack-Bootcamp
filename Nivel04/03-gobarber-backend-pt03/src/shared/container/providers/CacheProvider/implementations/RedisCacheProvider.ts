@@ -9,8 +9,10 @@ export default class RedisCacheProvider implements ICacheProvider {
     this.client = new Redis(cacheConfig.config.redis);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public async save(key: string, value: any): Promise<void> {
-    this.client.set(key, JSON.stringify(value));
+    console.log(`Salvando o Cache ${key}`);
+    await this.client.set(key, JSON.stringify(value));
   }
 
   public async recover<T>(key: string): Promise<T | null> {
@@ -20,7 +22,8 @@ export default class RedisCacheProvider implements ICacheProvider {
   }
 
   public async invalidate(key: string): Promise<void> {
-    console.log(key);
+    console.log(`Invalidado o Cache ${key}`);
+    await this.client.del(key);
   }
 
   public async invalidatePrefix(prefix: string): Promise<void> {
