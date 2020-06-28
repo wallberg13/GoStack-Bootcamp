@@ -2,7 +2,7 @@
 @provider_id = 12f3e6bd-2e19-477f-8a77-e0789d2a4ebb
 ### Obtendo todos os providers except user_logged
 GET {{host}}
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTE1MzY4NTIsImV4cCI6MTU5MTYyMzI1Miwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.m1zVmXHekJifTwXuwKeGQfpqwk9hBybHAliXmuZyVWM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTMyMzA0MjcsImV4cCI6MTU5MzMxNjgyNywic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.0yjuOLKMkP9KBm50sg9lDH-xpCbMm4gm0QNBvdktNmE
 
 ### List Month Availability
 GET {{host}}/{{provider_id}}/month-availability
