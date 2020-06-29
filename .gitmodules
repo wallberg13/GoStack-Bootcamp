@@ -4,3 +4,6 @@
 [submodule "Nivel03/GoStack-Nivel03-FundamentosReactJS"]
 	path = Nivel03/GoStack-Nivel03-FundamentosReactJS
 	url = https://github.com/wallberg13/GoStack-Nivel03-FundamentosReactJS
+[submodule "Nivel04/GoStack-Nivel04-DatabaseRelations"]
+	path = Nivel04/GoStack-Nivel04-DatabaseRelations
+	url = https://github.com/wallberg13/GoStack-Nivel04-DatabaseRelations
