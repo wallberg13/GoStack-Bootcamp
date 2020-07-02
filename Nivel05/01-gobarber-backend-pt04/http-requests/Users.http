@@ -1,0 +1,24 @@
+@host = http://localhost:3333/users
+@formDataLimit = XXXXXXXXXXXXXXXXXXXX
+
+###
+POST {{host}}
+Content-Type: application/json
+
+{
+  "name": "Wall Berg Morais",
+  "email": "wallbergmirandamorais5@gmail.com",
+  "password": "paparroz"
+}
+
+###
+PATCH {{host}}/avatar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI5NjY0MzMsImV4cCI6MTU5MzA1MjgzMywic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.C0vDiuI6GgcyIXmvnsk1CHzK4j5VHL31TK5INVv0QtQ
+Content-Type: multipart/form-data; boundary={{formDataLimit}}
+
+--{{formDataLimit}}
+Content-Disposition: form-data; name="avatar"; filename="profile.jpg"
+Content-Type: image/jpg
+
+< ./../profile.jpg
+--{{formDataLimit}}--

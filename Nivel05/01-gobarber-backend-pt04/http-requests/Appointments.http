@@ -1,0 +1,29 @@
+@host = http://localhost:3333/appointments
+
+@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTMzMTcxNDUsImV4cCI6MTU5MzQwMzU0NSwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.Boe_aBK1QQuTNQBI75_-S9xxOHJGAN_Gn7TvPO7Jq0s
+@tokenProvider = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTMzMTY5NjUsImV4cCI6MTU5MzQwMzM2NSwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.R1Vs8P0ijGcTXPDaTdzFc0ng_OB8ni9A5APcPszBwN0
+
+### Create Appointment
+POST {{host}}
+Content-Type: application/json
+Authorization: Bearer {{tokenUser}}
+
+{
+  "provider_id": "3a807383-6a8b-4104-befb-dd3f6b87e154",
+  "date": "2020-06-30 17:00:00"
+}
+
+### List All Appointment
+GET {{host}}
+Authorization: Bearer {{tokenUser}}
+
+### List All Appointments in specific Day
+GET {{host}}/me
+Authorization: Bearer {{tokenProvider}}
+Content-Type: application/json
+
+{
+  "year": 2020,
+  "month": 6,
+  "day": 15
+}

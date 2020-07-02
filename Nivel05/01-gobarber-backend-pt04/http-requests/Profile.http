@@ -1,0 +1,18 @@
+@host = http://localhost:3333/profile/
+
+### Mostrango o Profile
+GET {{host}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI2MjIyMTEsImV4cCI6MTU5MjcwODYxMSwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.pijbq7Qc4zGKIXaXXeGuBRY7sbgntapwPtJ_mUPaLnQ
+
+### Atualizando o Profile
+PUT {{host}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI1MzQ4NDYsImV4cCI6MTU5MjYyMTI0Niwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.7cKnMLKhqWDnuyXIyvYWKEA-1NNCFrMoF0Xef2mHHh4
+Content-Type: application/json
+
+{
+  "name": "Wall Berg M.",
+  "email": "wallbergmirandamorais@gmail.com",
+  "old_password": "123123",
+  "password": "123456",
+  "password_confirmation": "123456"
+}
