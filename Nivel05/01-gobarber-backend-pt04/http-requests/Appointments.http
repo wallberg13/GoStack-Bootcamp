@@ -1,7 +1,7 @@
 @host = http://localhost:3333/appointments
 
-@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTMzMTcxNDUsImV4cCI6MTU5MzQwMzU0NSwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.Boe_aBK1QQuTNQBI75_-S9xxOHJGAN_Gn7TvPO7Jq0s
-@tokenProvider = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTMzMTY5NjUsImV4cCI6MTU5MzQwMzM2NSwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.R1Vs8P0ijGcTXPDaTdzFc0ng_OB8ni9A5APcPszBwN0
+@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTM2NjA1OTksImV4cCI6MTU5Mzc0Njk5OSwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.737r0rZP9uYZzUzp4CILTEWUYj-AlCNZpjSpkVlY-Bk
+@tokenProvider = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTM2NjA2MTQsImV4cCI6MTU5Mzc0NzAxNCwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.jntMuiS2DN2AtvnQGYBGfgD818Ak0qw94JcWYF56eSo
 
 ### Create Appointment
 POST {{host}}
@@ -10,7 +10,7 @@ Authorization: Bearer {{tokenUser}}
 
 {
   "provider_id": "3a807383-6a8b-4104-befb-dd3f6b87e154",
-  "date": "2020-06-30 17:00:00"
+  "date": "2020-07-04 14:00:00"
 }
 
 ### List All Appointment
@@ -18,5 +18,5 @@ GET {{host}}
 Authorization: Bearer {{tokenUser}}
 
 ### List All Appointments of Provider in specific Day
-GET {{host}}/me?year=2020&month=6&day=14
+GET {{host}}/me?year=2020&month=7&day=4
 Authorization: Bearer {{tokenProvider}}
