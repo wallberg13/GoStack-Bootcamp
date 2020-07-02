@@ -6,7 +6,7 @@ GET {{host}}
 Authorization: Bearer {{tokenAuth}}
 
 ### List Month Availability
-GET {{host}}/{{provider_id}}/month-availability?year=2020&month=6
+GET {{host}}/{{provider_id}}/month-availability?year=2020&month=7
 Authorization: Bearer {{tokenAuth}}
 
 ### List Day Availability
