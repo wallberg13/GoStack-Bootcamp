@@ -1,27 +1,14 @@
 @host = http://localhost:3333/providers/
 @provider_id = 12f3e6bd-2e19-477f-8a77-e0789d2a4ebb
+@tokenAuth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTM2NTA3NzcsImV4cCI6MTU5MzczNzE3Nywic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.f4m5krmfRfzwUJweP7adWpkghRKmiiUM9d6enfq_UqA
 ### Obtendo todos os providers except user_logged
 GET {{host}}
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTMzMTU3NjIsImV4cCI6MTU5MzQwMjE2Miwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.kj0VJt4_GsDEc9NGgg8TTJHJ0afLOBtETqXp3-K21-o
+Authorization: Bearer {{tokenAuth}}
 
 ### List Month Availability
-GET {{host}}/{{provider_id}}/month-availability
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIxNDU4MzgsImV4cCI6MTU5MjIzMjIzOCwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.qF4XTjkTtxKnKuoDGZ6-uh20LtF0UDxVYrMPP3JsCfU
-Content-Type: application/json
-
-{
-  "year": 2020,
-  "month": 6
-}
+GET {{host}}/{{provider_id}}/month-availability?year=2020&month=6
+Authorization: Bearer {{tokenAuth}}
 
 ### List Day Availability
-GET {{host}}/{{provider_id}}/day-availability
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIxNDU4MzgsImV4cCI6MTU5MjIzMjIzOCwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.qF4XTjkTtxKnKuoDGZ6-uh20LtF0UDxVYrMPP3JsCfU
-Content-Type: application/json
-
-{
-  "year": 2020,
-  "month": 6,
-  "day": 14
-}
-
+GET {{host}}/{{provider_id}}/day-availability?year=2020&month=7&day=2
+Authorization: Bearer {{tokenAuth}}
