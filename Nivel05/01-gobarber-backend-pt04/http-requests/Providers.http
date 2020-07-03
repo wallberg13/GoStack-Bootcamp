@@ -1,14 +1,26 @@
-@host = http://localhost:3333/providers/
 @provider_id = 12f3e6bd-2e19-477f-8a77-e0789d2a4ebb
 @tokenAuth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTM2NTA3NzcsImV4cCI6MTU5MzczNzE3Nywic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.f4m5krmfRfzwUJweP7adWpkghRKmiiUM9d6enfq_UqA
+
+#################################################################
 ### Obtendo todos os providers except user_logged
-GET {{host}}
+#################################################################
+GET {{base_url}}/providers/
 Authorization: Bearer {{tokenAuth}}
 
+#################################################################
 ### List Month Availability
-GET {{host}}/{{provider_id}}/month-availability?year=2020&month=7
+#################################################################
+GET {{base_url}}/providers/{{provider_id}}/month-availability?year=2020&month=7
 Authorization: Bearer {{tokenAuth}}
 
+#################################################################
 ### List Day Availability
-GET {{host}}/{{provider_id}}/day-availability?year=2020&month=7&day=2
+#################################################################
+GET {{base_url}}/providers/{{provider_id}}/day-availability?year=2020&month=7&day=2
+Authorization: Bearer {{tokenAuth}}
+
+#################################################################
+### List All Appointments of Provider in specific Day
+#################################################################
+GET {{base_url}}/appointments/me?year=2020&month=7&day=4
 Authorization: Bearer {{tokenAuth}}

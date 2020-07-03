@@ -1,7 +1,8 @@
-@host = http://localhost:3333/sessions/
-
+#################################################################
 ## Realizando Login
-POST {{host}}
+#################################################################
+# @name login01
+POST {{base_url}}/sessions/
 Content-Type: application/json
 
 {
@@ -9,9 +10,11 @@ Content-Type: application/json
   "password": "123456"
 }
 
-
+#################################################################
 ### Realizando Login - 2
-POST {{host}}
+#################################################################
+# @name login02
+POST {{base_url}}/sessions/
 Content-Type: application/json
 
 {
