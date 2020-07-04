@@ -25,7 +25,6 @@ const ForgotPassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
 
-  console.log(loading);
   const { addToast } = useToast();
 
   const handleSubmit = useCallback(
