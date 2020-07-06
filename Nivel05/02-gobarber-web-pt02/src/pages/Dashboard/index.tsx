@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Header,
@@ -7,6 +7,8 @@ import {
   Content,
   Schedule,
   NextAppointment,
+  Section,
+  Appointment,
   Calendar
 } from "./styles";
 
@@ -15,9 +17,9 @@ import { FiPower, FiClock } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
 
 const Dashboard: React.FC = () => {
-  const { signOut, user } = useAuth();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  console.log(user);
+  const { signOut, user } = useAuth();
 
   return (
     <Container>
@@ -61,6 +63,81 @@ const Dashboard: React.FC = () => {
               </span>
             </div>
           </NextAppointment>
+
+          <Section>
+            <strong>Manhã</strong>
+
+            <Appointment>
+              <span>
+                <FiClock /> 8:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/8339296?s=400&u=799817970db70debe9c79d63fa4ef04f8ffaafc7&v=4"
+                  alt="Wall Berg Morais"
+                />
+                <strong>Wall Berg Morais</strong>
+              </div>
+            </Appointment>
+
+            <Appointment>
+              <span>
+                <FiClock /> 8:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/8339296?s=400&u=799817970db70debe9c79d63fa4ef04f8ffaafc7&v=4"
+                  alt="Wall Berg Morais"
+                />
+                <strong>Wall Berg Morais</strong>
+              </div>
+            </Appointment>
+          </Section>
+
+          <Section>
+            <strong>Tarde</strong>
+            <Appointment>
+              <span>
+                <FiClock /> 8:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/8339296?s=400&u=799817970db70debe9c79d63fa4ef04f8ffaafc7&v=4"
+                  alt="Wall Berg Morais"
+                />
+                <strong>Wall Berg Morais</strong>
+              </div>
+            </Appointment>
+            <Appointment>
+              <span>
+                <FiClock /> 8:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/8339296?s=400&u=799817970db70debe9c79d63fa4ef04f8ffaafc7&v=4"
+                  alt="Wall Berg Morais"
+                />
+                <strong>Wall Berg Morais</strong>
+              </div>
+            </Appointment>
+            <Appointment>
+              <span>
+                <FiClock /> 8:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars1.githubusercontent.com/u/8339296?s=400&u=799817970db70debe9c79d63fa4ef04f8ffaafc7&v=4"
+                  alt="Wall Berg Morais"
+                />
+                <strong>Wall Berg Morais</strong>
+              </div>
+            </Appointment>
+          </Section>
         </Schedule>
         <Calendar />
       </Content>
