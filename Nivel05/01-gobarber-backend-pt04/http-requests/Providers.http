@@ -1,5 +1,5 @@
 @provider_id = 12f3e6bd-2e19-477f-8a77-e0789d2a4ebb
-@tokenAuth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTM2NTA3NzcsImV4cCI6MTU5MzczNzE3Nywic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.f4m5krmfRfzwUJweP7adWpkghRKmiiUM9d6enfq_UqA
+@tokenAuth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQwOTE1NzYsImV4cCI6MTU5NDE3Nzk3Niwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.VHWNPLb9pfmxUTyZL8D3mJzqhamYWVscLoXpCZ3jDKI
 
 #################################################################
 ### Obtendo todos os providers except user_logged

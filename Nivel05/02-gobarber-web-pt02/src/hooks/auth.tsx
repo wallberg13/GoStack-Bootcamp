@@ -49,6 +49,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     const user = localStorage.getItem("@GoBarber:user");
 
     if (token && user) {
+      // Executado quando o usuário faz o refresh da página
+      api.defaults.headers.authorization = `Bearer ${token}`;
       return { token, user: JSON.parse(user) };
     }
 
@@ -62,6 +64,9 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     localStorage.setItem("@GoBarber:token", token);
     localStorage.setItem("@GoBarber:user", JSON.stringify(user));
+
+    // Executado quando o usuário vai fazer o login
+    api.defaults.headers.authorization = `Bearer ${token}`;
 
     setData({ token, user });
   }, []);

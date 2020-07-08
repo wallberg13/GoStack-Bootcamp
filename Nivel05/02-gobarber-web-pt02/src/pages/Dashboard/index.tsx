@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DayPicker, { DayModifiers } from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
@@ -18,13 +18,29 @@ import {
 
 import logoImg from "../../assets/logo.svg";
 import { useAuth } from "../../hooks/auth";
+import api from "../../services/api";
 
-interface CalendarModifiers extends DayModifiers {
+interface MonthAvailabilityItem {
+  day: number;
   available: boolean;
 }
 
+// Nunca iremos manipular / criar variaveis normais em tempo de renderizaçãos
+
 const Dashboard: React.FC = () => {
+  const { signOut, user } = useAuth();
+
+  // selectDate faz com que a exibição dos agendamentos sejam para o dia selecionado
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  // currentMonth faz com que o calendário mostre os dias disponíveis daquele mês para aquele provider
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  // Array com a disponibilidade dos dias do mês (na vdd, para o prestador de serviço, deve aparecer o contrario)
+  // do que essa rotina prega.
+  const [monthAvailability, setMonthAvailability] = useState<
+    MonthAvailabilityItem[]
+  >([]);
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
     if (modifiers.available) {
@@ -32,7 +48,37 @@ const Dashboard: React.FC = () => {
     }
   }, []);
 
-  const { signOut, user } = useAuth();
+  const handleMonthChange = useCallback((month: Date) => {
+    setCurrentMonth(month);
+  }, []);
+
+  useEffect(() => {
+    api
+      .get(`/providers/${user.id}/month-availability`, {
+        params: {
+          year: currentMonth.getFullYear(),
+          month: currentMonth.getMonth() + 1
+        }
+      })
+      .then((response) => {
+        setMonthAvailability(response.data);
+      });
+  }, [currentMonth, user.id]);
+
+  // Serve para memorizar uma formato / valor especifico
+  const disabledDays = useMemo(() => {
+    const dates = monthAvailability
+      .filter((monthDay) => monthDay.available === false)
+      .map((monthDay) => {
+        const date = new Date(
+          currentMonth.getFullYear(),
+          currentMonth.getMonth(),
+          monthDay.day
+        );
+        return date;
+      });
+    return dates;
+  }, [currentMonth, monthAvailability]);
 
   return (
     <Container>
@@ -152,13 +198,15 @@ const Dashboard: React.FC = () => {
             </Appointment>
           </Section>
         </Schedule>
+
         <Calendar>
           <DayPicker
             weekdaysShort={["D", "S", "T", "Q", "Q", "S", "S"]}
             fromMonth={new Date()}
-            disabledDays={[{ daysOfWeek: [0, 6] }]}
+            disabledDays={[{ daysOfWeek: [0, 6] }, ...disabledDays]}
             modifiers={{ available: { daysOfWeek: [1, 2, 3, 4, 5] } }}
             onDayClick={handleDateChange}
+            onMonthChange={handleMonthChange}
             selectedDays={selectedDate}
             months={[
               "Janeiro",

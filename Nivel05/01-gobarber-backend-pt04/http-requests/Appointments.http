@@ -1,4 +1,4 @@
-@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTM2NjA1OTksImV4cCI6MTU5Mzc0Njk5OSwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.737r0rZP9uYZzUzp4CILTEWUYj-AlCNZpjSpkVlY-Bk
+@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQxNzEzNzUsImV4cCI6MTU5NDI1Nzc3NSwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.lw2mng3b6FBBdmyA0vGpKxALNQffo7oMU7wASR-g_14
 @tokenProvider = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTM2NjA2MTQsImV4cCI6MTU5Mzc0NzAxNCwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.jntMuiS2DN2AtvnQGYBGfgD818Ak0qw94JcWYF56eSo
 
 #################################################################
@@ -6,9 +6,9 @@
 #################################################################
 POST {{base_url}}/appointments
 Content-Type: application/json
-Authorization: Bearer {{login01}}
+Authorization: Bearer {{tokenUser}}
 
 {
-  "provider_id": "3a807383-6a8b-4104-befb-dd3f6b87e154",
-  "date": "2020-07-04 14:00:00"
+  "provider_id": "19c02ea6-7d11-4a43-adf3-7357e804ee48",
+  "date": "2020-07-08 18:00:00"
 }
