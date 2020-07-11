@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp";
 import Dashboard from "../pages/Dashboard";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
+import Profile from "../pages/Profile";
 
 /**
  * A autenticação das rotas devem ser verificadas no arquivo de rotas,
@@ -26,6 +27,8 @@ const Router: React.FC = () => {
       <Route path="/signup" exact component={SignUp} />
       <Route path="/forgot-password" exact component={ForgotPassword} />
       <Route path="/reset-password" exact component={ResetPassword} />
+
+      <Route path="/profile" exact component={Profile} isPrivate />
       <Route path="/Dashboard" exact component={Dashboard} isPrivate />
     </Switch>
   );

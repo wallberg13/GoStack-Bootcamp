@@ -14,7 +14,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  body, -moz-user-input, button {
+  body, -moz-user-input, button, input {
     font-family: 'Roboto Slab', serif;
     font-size: 16px; /** Tamanho padrão da aplicação - 16 */
   }
