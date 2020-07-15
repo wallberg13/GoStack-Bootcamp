@@ -8,7 +8,7 @@ import api from "../services/api";
  *    arvores de elementos (basicamente, entre contextos diferentes). É uma fonte da verdade.
  */
 
-interface User {
+export interface User {
   id: string;
   name: string;
   email: string;
