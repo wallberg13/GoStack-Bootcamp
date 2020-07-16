@@ -1,5 +1,6 @@
 // import AppError from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { classToClass } from "class-transformer";
 import ICacheProvider from "@shared/container/providers/CacheProvider/models/ICacheProvider";
 
 import User from "@modules/users/infra/typeorm/entities/User";
@@ -31,7 +32,10 @@ class ListProvidersService {
       });
 
       // ":" no redis é como se fosse um nível a mais de cache.
-      await this.cacheProvider.save(`providers-list:${user_id}`, users);
+      await this.cacheProvider.save(
+        `providers-list:${user_id}`,
+        classToClass(users)
+      );
     }
 
     return users;
