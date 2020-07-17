@@ -61,7 +61,7 @@ const SignIn: React.FC = () => {
 
         await signIn({ email: data.email, password: data.password });
 
-        Alert.alert("Sucesso na Autenticação", "Tudo Certinho, Meu Chapa!!!");
+        // Alert.alert("Sucesso na Autenticação", "Tudo Certinho, Meu Chapa!!!");
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
