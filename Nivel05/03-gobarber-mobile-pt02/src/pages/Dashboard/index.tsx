@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import api from "../../services/api";
@@ -12,8 +13,16 @@ import {
   UserName,
   ProfileButton,
   UserAvatar,
-  ProvidersList
+  ProvidersList,
+  ProviderContainer,
+  ProviderAvatar,
+  ProviderInfo,
+  ProviderName,
+  ProviderMeta,
+  ProviderMetaText,
+  ProvidersListTitle
 } from "./styles";
+import Icon from "react-native-vector-icons/Feather";
 import Button from "../../components/Button";
 
 export interface Provider {
@@ -37,6 +46,13 @@ const Dashboard: React.FC = () => {
     navigate("Profile");
   }, [navigate]);
 
+  const navigateToCreateAppointment = useCallback(
+    (providerId) => {
+      navigate("CreateAppointment", { providerId });
+    },
+    [navigate]
+  );
+
   return (
     <Container>
       <Header>
@@ -52,10 +68,31 @@ const Dashboard: React.FC = () => {
       <ProvidersList
         data={providers}
         keyExtractor={(provider) => provider.id}
-        renderItem={({ item }) => <UserName>{item.name}</UserName>}
-      />
+        // A diferença de colocar um header dentro e fora da lista, é que
+        // dentro da lista ele acompanha o scroll.
+        ListHeaderComponent={
+          <ProvidersListTitle>Cabeleireiros</ProvidersListTitle>
+        }
+        renderItem={({ item: provider }) => (
+          <ProviderContainer
+            onPress={() => navigateToCreateAppointment(provider.id)}
+          >
+            <ProviderAvatar source={{ uri: provider.avatar_url }} />
+            <ProviderInfo>
+              <ProviderName>{provider.name}</ProviderName>
+              <ProviderMeta>
+                <Icon name="calendar" size={14} color="#ff9000" />
+                <ProviderMetaText>Segunda à sexta</ProviderMetaText>
+              </ProviderMeta>
 
-      <Button onPress={signOut}>Sair</Button>
+              <ProviderMeta>
+                <Icon name="clock" size={14} color="#ff9000" />
+                <ProviderMetaText>8h as 18h</ProviderMetaText>
+              </ProviderMeta>
+            </ProviderInfo>
+          </ProviderContainer>
+        )}
+      />
     </Container>
   );
 };
