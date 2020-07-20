@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import api from "../../services/api";
@@ -23,7 +22,6 @@ import {
   ProvidersListTitle
 } from "./styles";
 import Icon from "react-native-vector-icons/Feather";
-import Button from "../../components/Button";
 
 export interface Provider {
   id: string;
