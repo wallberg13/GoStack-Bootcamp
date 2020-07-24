@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import api from "../../services/api";
-
+import Button from "../../components/Button";
 import { useAuth } from "../../hooks/auth";
 
 import {
@@ -19,7 +20,7 @@ import {
   ProviderName,
   ProviderMeta,
   ProviderMetaText,
-  ProvidersListTitle
+  ProvidersListTitle,
 } from "./styles";
 import Icon from "react-native-vector-icons/Feather";
 
@@ -71,8 +72,9 @@ const Dashboard: React.FC = () => {
         ListHeaderComponent={
           <ProvidersListTitle>Cabeleireiros</ProvidersListTitle>
         }
-        renderItem={({ item: provider }) => (
+        renderItem={({ item: provider, index }) => (
           <ProviderContainer
+            isLast={index + 1 === providers.length}
             onPress={() => navigateToCreateAppointment(provider.id)}
           >
             <ProviderAvatar source={{ uri: provider.avatar_url }} />
@@ -91,6 +93,9 @@ const Dashboard: React.FC = () => {
           </ProviderContainer>
         )}
       />
+      <Button style={{ height: 64 }} onPress={signOut}>
+        Sair
+      </Button>
     </Container>
   );
 };

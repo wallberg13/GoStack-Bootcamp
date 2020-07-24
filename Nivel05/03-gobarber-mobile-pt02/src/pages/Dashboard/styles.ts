@@ -4,6 +4,10 @@ import { Provider } from "./index";
 import { RectButton } from "react-native-gesture-handler";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
+interface ProviderContainerProps {
+  isLast: boolean;
+}
+
 export const Container = styled.View`
   flex: 1;
 `;
@@ -48,11 +52,11 @@ export const ProvidersListTitle = styled.Text`
   color: #f4ede8;
 `;
 
-export const ProviderContainer = styled(RectButton)`
+export const ProviderContainer = styled(RectButton)<ProviderContainerProps>`
   background: #3e3b47;
   border-radius: 10px;
   padding: 20px;
-  margin-bottom: 16px;
+  margin-bottom: ${(props) => (props.isLast ? 42 : 16)}px;
   flex-direction: row;
   align-items: center;
 `;
