@@ -6,4 +6,3 @@ module.exports = {
   },
   assets: ["./assets/fonts"],
 };
-f;
