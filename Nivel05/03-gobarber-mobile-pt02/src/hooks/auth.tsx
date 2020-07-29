@@ -3,7 +3,7 @@ import React, {
   useCallback,
   useState,
   useContext,
-  useEffect
+  useEffect,
 } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
 import api from "../services/api";
@@ -16,7 +16,7 @@ import api from "../services/api";
  *  -> entrar na pasta ios e fazer um pod install
  */
 
-interface User {
+export interface User {
   id: string;
   name: string;
   email: string;
@@ -35,9 +35,10 @@ interface SignInCredentials {
 
 interface AuthContextData {
   user: User;
+  loading: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
-  loading: boolean;
+  updateUser(user: User): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -52,7 +53,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     async function loadStorageData(): Promise<void> {
       const [token, user] = await AsyncStorage.multiGet([
         "@GoBarber:token",
-        "@GoBarber:user"
+        "@GoBarber:user",
       ]);
 
       if (token[1] && user[1]) {
@@ -74,7 +75,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     await AsyncStorage.multiSet([
       ["@GoBarber:token", token],
-      ["@GoBarber:user", JSON.stringify(user)]
+      ["@GoBarber:user", JSON.stringify(user)],
     ]);
 
     api.defaults.headers.authorization = `Bearer ${token}`;
@@ -89,8 +90,22 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  const updateUser = useCallback(
+    async (user: User) => {
+      setData({
+        token: data.token,
+        user,
+      });
+
+      await AsyncStorage.setItem("@GoBarber:user", JSON.stringify(user));
+    },
+    [setData, data.token]
+  );
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut, loading }}>
+    <AuthContext.Provider
+      value={{ user: data.user, loading, signIn, signOut, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
