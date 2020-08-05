@@ -47,10 +47,10 @@ const SingIn: React.FC = () => {
 
         await signIn({ email: data.email, password: data.password });
 
-        addToast({
-          title: "Sucesso na Autenticação",
-          type: "sucess"
-        });
+        // addToast({
+        //   title: "Sucesso na Autenticação",
+        //   type: "sucess"
+        // });
 
         history.push("/dashboard");
       } catch (err) {
