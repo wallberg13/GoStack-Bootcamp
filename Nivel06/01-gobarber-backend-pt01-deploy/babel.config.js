@@ -2,7 +2,7 @@ module.exports = {
   // Converte o código para a versão atual do Node que estejamos utilizando no momento da conversão.
   // Padrão de config: [<nome-preset>, { < object com configuração > }]
   presets: [
-    ["@babel/preset-env", { targets: { node: 10 } }],
+    ["@babel/preset-env", { targets: { node: "current" } }],
     "@babel/preset-typescript"
   ],
   plugins: [
