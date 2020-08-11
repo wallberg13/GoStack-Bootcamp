@@ -1,0 +1,23 @@
+#################################################################
+## Realizando Login
+#################################################################
+# @name login01
+POST {{base_url}}/sessions/
+Content-Type: application/json
+
+{
+  "email": "wallbergmirandamorais@gmail.com",
+  "password": "123123"
+}
+
+#################################################################
+### Realizando Login - 2
+#################################################################
+# @name login02
+POST {{base_url}}/sessions/
+Content-Type: application/json
+
+{
+  "email": "wallbergmirandamorais2@gmail.com",
+  "password": "paparroz"
+}

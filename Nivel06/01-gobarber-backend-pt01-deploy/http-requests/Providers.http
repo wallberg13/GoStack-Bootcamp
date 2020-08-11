@@ -1,0 +1,26 @@
+@provider_id = 12f3e6bd-2e19-477f-8a77-e0789d2a4ebb
+@tokenAuth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQwOTE1NzYsImV4cCI6MTU5NDE3Nzk3Niwic3ViIjoiMTljMDJlYTYtN2QxMS00YTQzLWFkZjMtNzM1N2U4MDRlZTQ4In0.VHWNPLb9pfmxUTyZL8D3mJzqhamYWVscLoXpCZ3jDKI
+
+#################################################################
+### Obtendo todos os providers except user_logged
+#################################################################
+GET {{base_url}}/providers/
+Authorization: Bearer {{tokenAuth}}
+
+#################################################################
+### List Month Availability
+#################################################################
+GET {{base_url}}/providers/{{provider_id}}/month-availability?year=2020&month=7
+Authorization: Bearer {{tokenAuth}}
+
+#################################################################
+### List Day Availability
+#################################################################
+GET {{base_url}}/providers/{{provider_id}}/day-availability?year=2020&month=7&day=2
+Authorization: Bearer {{tokenAuth}}
+
+#################################################################
+### List All Appointments of Provider in specific Day
+#################################################################
+GET {{base_url}}/appointments/me?year=2020&month=7&day=4
+Authorization: Bearer {{tokenAuth}}

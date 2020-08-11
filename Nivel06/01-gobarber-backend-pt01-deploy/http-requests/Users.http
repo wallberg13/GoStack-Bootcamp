@@ -1,0 +1,47 @@
+@formDataLimit = XXXXXXXXXXXXXXXXXXXX
+
+#################################################################
+### Register
+POST {{base_url}}/users
+Content-Type: application/json
+
+{
+  "name": "Wall Berg Morais",
+  "email": "wallbergmirandamorais5@gmail.com",
+  "password": "paparroz"
+}
+
+#################################################################
+### Alterando o Avatar
+PATCH {{base_url}}/users/avatar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI5NjY0MzMsImV4cCI6MTU5MzA1MjgzMywic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.C0vDiuI6GgcyIXmvnsk1CHzK4j5VHL31TK5INVv0QtQ
+Content-Type: multipart/form-data; boundary={{formDataLimit}}
+
+--{{formDataLimit}}
+Content-Disposition: form-data; name="avatar"; filename="profile.jpg"
+Content-Type: image/jpg
+
+< ./../profile.jpg
+--{{formDataLimit}}--
+
+#################################################################
+### Profile
+### Mostrando o Profile do Usuário
+#################################################################
+GET {{base_url}}/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI2MjIyMTEsImV4cCI6MTU5MjcwODYxMSwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.pijbq7Qc4zGKIXaXXeGuBRY7sbgntapwPtJ_mUPaLnQ
+
+#################################################################
+### Atualizando o Profile do usuário
+#################################################################
+PUT {{base_url}}/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTI1MzQ4NDYsImV4cCI6MTU5MjYyMTI0Niwic3ViIjoiM2E4MDczODMtNmE4Yi00MTA0LWJlZmItZGQzZjZiODdlMTU0In0.7cKnMLKhqWDnuyXIyvYWKEA-1NNCFrMoF0Xef2mHHh4
+Content-Type: application/json
+
+{
+  "name": "Wall Berg M.",
+  "email": "wallbergmirandamorais@gmail.com",
+  "old_password": "123123",
+  "password": "123456",
+  "password_confirmation": "123456"
+}
