@@ -1,0 +1,22 @@
+- Estratégias de Deploy
+
+-> Digital Ocean
+
+=> Gerando o build do Projeto
+
+- Otimizando o TSC
+
+1. Ele não conseguiu fazer a conversão dos relative modules (@ nos imports), o NodeJS não entende.
+1.Solução:
+
+2. Lentidão do TSC
+2.Solução:
+  - Utilização do Babel
+
+  -> Instalação:
+    - @babel/cli: linha de comando;
+    - @babel/core: o proprio nome já diz;
+    - @babel/node: já que estamos desenvolvendo para NodeJS;
+    - @babel/preset-env: vai definir o nível de transpilação que vamos fazer no nosso código;
+    - @babel/preset-typescript: precisa dizer?
+    - babel-plugin-module-resolver: resolver a questão dos modulos TS (as importações).
