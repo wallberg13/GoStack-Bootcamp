@@ -6,7 +6,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   TextInput,
-  Alert
+  Alert,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
@@ -27,7 +27,7 @@ import {
   ForgotPassword,
   ForgotPasswordText,
   CreateAccountButton,
-  CreateAccountButtonText
+  CreateAccountButtonText,
 } from "./styles";
 
 interface SignInFormData {
@@ -51,7 +51,7 @@ const SignIn: React.FC = () => {
           email: Yup.string()
             .required("E-mail obrigatório")
             .email("Digite um e-mail válido"),
-          password: Yup.string().required("Senha obrigatória")
+          password: Yup.string().required("Senha obrigatória"),
         });
 
         /**
@@ -101,7 +101,7 @@ const SignIn: React.FC = () => {
           keyboardShouldPersistTaps="handled"
         >
           <Container>
-            <Image source={logoImg} />
+            <Image testID="login-image" source={logoImg} />
             <View>
               <Title>Faça seu Logon</Title>
             </View>
