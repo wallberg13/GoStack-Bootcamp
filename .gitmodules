@@ -10,3 +10,6 @@
 [submodule "Nivel05/GoStack-Nivel05-GoRestaurantMobile"]
 	path = Nivel05/GoStack-Nivel05-GoRestaurantMobile
 	url = https://github.com/wallberg13/GoStack-Nivel05-GoRestaurantMobile
+[submodule "Nivel06/02-gobarber-web-pt02-deploy"]
+	path = Nivel06/02-gobarber-web-pt02-deploy
+	url = https://github.com/wallberg13/deploy-gobarber-web
